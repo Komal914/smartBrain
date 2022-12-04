@@ -12,13 +12,27 @@ class App extends Component {
       input: "",
     };
   }
+
+  //function for the search bar
+  onInputChange = (event) => {
+    console.log(event.target.value);
+  };
+
+  //function to detect image after button pressed
+  onButtonSubmit = () => {
+    console.log("button pressed");
+  };
+
   render() {
     return (
       <div className="App">
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm />
+        <ImageLinkForm
+          onInputChange={this.onInputChange}
+          onButtonSubmit={this.onButtonSubmit}
+        />
       </div>
     );
   }
