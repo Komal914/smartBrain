@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
+import axios from "axios";
 import "./App.css";
 
 //our face detection API
@@ -27,15 +28,15 @@ class App extends Component {
     console.log("button pressed");
     app.models
       .predict(
-        Clarifai.FACE_DETECT_MODEL,
-        "https://samples.clarifai.com/face-det.jpg"
+        "53e1df302c079b3db8a0a36033ed2d15",
+        "https://samples.clarifai.com/metro-north.jpg"
       )
       .then(
         function (response) {
-          console.log(response);
+          console.log("hello");
         },
         function (err) {
-          console.log(err);
+          console.log("MANNNNNN dis sucks", err);
         }
       );
   };
