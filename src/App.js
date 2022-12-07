@@ -30,16 +30,17 @@ class App extends Component {
     const height = Number(image.height);
 
     return {
-      leftCol: clarifai_face.left_col + width,
-      topRow: clarifai_face.top_row + height,
+      leftCol: clarifai_face.left_col * width,
+      topRow: clarifai_face.top_row * height,
       rightCol: width - clarifai_face.right_col * width,
       bottomRow: height - clarifai_face.bottom_row * height,
     };
   };
 
   displayFaceBox = (box) => {
-    console.log(box);
+    console.log("THIS IS THE B", box);
     this.setState({ box: box });
+    console.log("STATE: ", this.state.box);
   };
 
   //function for the search bar
