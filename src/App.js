@@ -6,6 +6,9 @@ import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 
 import Rank from "./components/Rank/Rank";
+
+import ParticlesBg from "particles-bg";
+
 import "./App.css";
 
 //our face detection API
@@ -67,6 +70,7 @@ class App extends Component {
         <Navigation />
         <Logo />
         <Rank />
+        <ParticlesBg type="cobweb" bg={true} />
         <ImageLinkForm
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
