@@ -24,11 +24,11 @@ class App extends Component {
       imageUrl: "",
       box: {},
       route: "signin",
+      isSignedIn: false,
     };
   }
 
   calculateFaceLocation = (data) => {
-    console.log("calculating");
     const clarifai_face =
       data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById("inputImage");
@@ -44,9 +44,7 @@ class App extends Component {
   };
 
   displayFaceBox = (box) => {
-    console.log("THIS IS THE B", box);
     this.setState({ box: box });
-    console.log("STATE: ", this.state.box);
   };
 
   //function for the search bar
@@ -56,7 +54,6 @@ class App extends Component {
 
   //function to detect image after button pressed
   onButtonSubmit = () => {
-    console.log("button pressed");
     this.setState({ imageUrl: this.state.input });
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
@@ -68,15 +65,24 @@ class App extends Component {
   };
 
   onRouteChange = (route) => {
+    if (route === "signout") {
+      this.setState({ isSignedIn: false });
+    } else if (route === "home") {
+      this.setState({ isSignedIn: true });
+    }
     this.setState({ route: route });
   };
 
   render() {
+    const { box, route, isSignedIn, imageUrl } = this.state;
     return (
       <div className="App">
         <ParticlesBg type="cobweb" bg={true} />
-        <Navigation onRouteChange={this.onRouteChange} />
-        {this.state.route === "home" ? (
+        <Navigation
+          isSignedIn={isSignedIn}
+          onRouteChange={this.onRouteChange}
+        />
+        {route === "home" ? (
           <div>
             <Logo />
             <Rank />
@@ -84,12 +90,9 @@ class App extends Component {
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
-            <FaceRecognition
-              box={this.state.box}
-              imageUrl={this.state.imageUrl}
-            />
+            <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
-        ) : this.state.route === "signin" ? (
+        ) : route === "signin" ? (
           <SignIn onRouteChange={this.onRouteChange} />
         ) : (
           <Register onRouteChange={this.onRouteChange} />
