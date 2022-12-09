@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
+import SignIn from "./components/SignIn/SignIn";
 
 import Rank from "./components/Rank/Rank";
 
@@ -22,10 +23,12 @@ class App extends Component {
       input: "",
       imageUrl: "",
       box: {},
+      route: "signin",
     };
   }
 
   calculateFaceLocation = (data) => {
+    console.log("calculating");
     const clarifai_face =
       data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById("inputImage");
@@ -64,18 +67,31 @@ class App extends Component {
       );
   };
 
+  onRouteChange = (route) => {
+    this.setState({ route: route });
+  };
+
   render() {
     return (
       <div className="App">
-        <Navigation />
-        <Logo />
-        <Rank />
         <ParticlesBg type="cobweb" bg={true} />
-        <ImageLinkForm
-          onInputChange={this.onInputChange}
-          onButtonSubmit={this.onButtonSubmit}
-        />
-        <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+        <Navigation onRouteChange={this.onRouteChange} />
+        {this.state.route === "signin" ? (
+          <SignIn onRouteChange={this.onRouteChange} />
+        ) : (
+          <div>
+            <Logo />
+            <Rank />
+            <ImageLinkForm
+              onInputChange={this.onInputChange}
+              onButtonSubmit={this.onButtonSubmit}
+            />
+            <FaceRecognition
+              box={this.state.box}
+              imageUrl={this.state.imageUrl}
+            />
+          </div>
+        )}
       </div>
     );
   }
