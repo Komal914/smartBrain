@@ -9,6 +9,7 @@
     "axios": "0.27.2",
     "clarifai": "^2.9.1",
     "particles-bg": "^2.5.5",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-parallax-tilt": "^1.7.72",
@@ -44,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-error-overlay": "^6.0.9"
   }
 }
