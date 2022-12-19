@@ -18,16 +18,27 @@ class SignIn extends React.Component {
   };
 
   //upon sign in
-  onSubmitSignIn = () => {
+  onSubmitSignIn = (event) => {
     //get backend server to perform authentication
-    fetch("http://localhost/3002/signin", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
+    fetch("http://localhost:3004/signin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         email: this.state.signInEmail,
-        password: this.state.signInPassword,
+        password: this.state.password,
       }),
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("SUCCESSS BBYYYYYYY WE LIVEEE:", data);
+      })
+      .catch((error) => {
+        console.error("ERRRRORRRRRRRRRRRRRR WHY U DO DIS DAMN IT ", error);
+      });
+    //direct user to home page
     this.props.onRouteChange("home");
   };
 
