@@ -34,9 +34,10 @@ class SignIn extends React.Component {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
         }
+
       })
       .catch((error) => {
-        console.error("ERRRRORRRRRRRRRRRRRR WHY U DO DIS DAMN IT ", error);
+        console.error("ERRRRORRRRRRRRRRRRRR ", error);
       });
   };
 
