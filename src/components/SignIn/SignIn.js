@@ -28,14 +28,16 @@ class SignIn extends React.Component {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log("SUCCESSS BBYYYYYYY WE LIVEEE:", data);
+      .then((user) => {
+        //direct user to home if user is inside the database
+        if (user.id) {
+          this.props.loadUser(user);
+          this.props.onRouteChange("home");
+        }
       })
       .catch((error) => {
         console.error("ERRRRORRRRRRRRRRRRRR WHY U DO DIS DAMN IT ", error);
       });
-    //direct user to home page
-    this.props.onRouteChange("home");
   };
 
   render() {
