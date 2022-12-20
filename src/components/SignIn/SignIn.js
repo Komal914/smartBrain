@@ -29,10 +29,10 @@ class SignIn extends React.Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("SUCCESSS BBYYYYYYY WE LIVEEE:", data);
+        console.log("SUCCESSS :", data);
       })
       .catch((error) => {
-        console.error("ERRRRORRRRRRRRRRRRRR WHY U DO DIS DAMN IT ", error);
+        console.error("ERRRRORRRRRRRRRRRRRR ", error);
       });
     //direct user to home page
     this.props.onRouteChange("home");
