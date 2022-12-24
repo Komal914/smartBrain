@@ -16,23 +16,26 @@ import "./App.css";
 const app = new Clarifai.App({
   apiKey: "7523494fd75c4a70b1f43a9bd6ccc4b1",
 });
+
+const initialState = {
+  input: "",
+  imageUrl: "",
+  box: {},
+  route: "signin",
+  isSignedIn: false,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: "",
+  },
+};
+
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: "",
-      imageUrl: "",
-      box: {},
-      route: "signin",
-      isSignedIn: false,
-      user: {
-        id: "",
-        name: "",
-        email: "",
-        entries: 0,
-        joined: "",
-      },
-    };
+    this.state = initialState;
   }
 
   loadUser = (data) => {
@@ -97,9 +100,11 @@ class App extends Component {
       });
   };
 
+  //routes for website flow
   onRouteChange = (route) => {
+    //if the user is logging out
     if (route === "signout") {
-      this.setState({ isSignedIn: false });
+      this.setState(initialState); //reset state values for next user login
     } else if (route === "home") {
       this.setState({ isSignedIn: true });
     }
