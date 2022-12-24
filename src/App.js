@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Clarifai from "clarifai";
 import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
@@ -11,11 +10,6 @@ import Rank from "./components/Rank/Rank";
 import ParticlesBg from "particles-bg";
 
 import "./App.css";
-
-//our face detection API
-const app = new Clarifai.App({
-  apiKey: "7523494fd75c4a70b1f43a9bd6ccc4b1",
-});
 
 const initialState = {
   input: "",
@@ -77,8 +71,14 @@ class App extends Component {
   //function to detect image after button pressed
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    app.models
-      .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+    fetch("http://localhost:3004/imageurl", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: this.state.input,
+      }),
+    })
+      .then((response) => response.json())
       .then((response) => {
         if (response) {
           fetch("http://localhost:3004/image", {
@@ -96,10 +96,11 @@ class App extends Component {
             .catch((err) => {
               console.log(err);
             });
+          this.displayFaceBox(this.calculateFaceLocation(response));
         }
-        this.displayFaceBox(this.calculateFaceLocation(response)).catch((err) =>
-          console.log(err)
-        );
+        if (!response) {
+          throw new Error("No response found!");
+        }
       });
   };
 
