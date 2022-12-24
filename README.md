@@ -1,5 +1,5 @@
 # Smart Brain 
-### 🚧👷🏻‍♀️This project is currently under construction👷🏻‍♀️🚧
+### 🚧👷🏻‍♀️This project is currently under construction👷🏻‍♀️🚧 The api server and database still need to be deployed for the site to function properly.
 [Link to site](https://komal914.github.io/smartBrain/)
 
 ## How to Run:
