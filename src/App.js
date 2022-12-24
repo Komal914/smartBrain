@@ -92,6 +92,9 @@ class App extends Component {
             .then((count) => {
               //we cannot simply set state for entries because it will change the whole user object
               this.setState(Object.assign(this.state.user, { entries: count }));
+            })
+            .catch((err) => {
+              console.log(err);
             });
         }
         this.displayFaceBox(this.calculateFaceLocation(response)).catch((err) =>
