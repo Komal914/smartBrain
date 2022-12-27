@@ -6,6 +6,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import SignIn from "./components/SignIn/SignIn";
 import Register from "./components/Register/Register";
 import Rank from "./components/Rank/Rank";
+import CardList from "./components/Cardlist/Cardlist";
 
 import ParticlesBg from "particles-bg";
 
@@ -17,6 +18,7 @@ const initialState = {
   box: {},
   route: "signin",
   isSignedIn: false,
+  descriptions: [],
   user: {
     id: "",
     name: "",
@@ -117,6 +119,7 @@ class App extends Component {
 
   render() {
     const { box, route, isSignedIn, imageUrl } = this.state;
+    const filteredRobots = this.state.descriptions;
     return (
       <div className="App">
         <ParticlesBg type="cobweb" bg={true} />
@@ -136,6 +139,7 @@ class App extends Component {
               onButtonSubmit={this.onButtonSubmit}
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
+            <CardList descriptions={filteredRobots} />
           </div>
         ) : route === "signin" ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
