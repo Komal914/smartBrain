@@ -6,6 +6,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import SignIn from "./components/SignIn/SignIn";
 import Register from "./components/Register/Register";
 import Rank from "./components/Rank/Rank";
+import CardList from "./components/Cardlist/Cardlist";
 
 import ParticlesBg from "particles-bg";
 
@@ -17,6 +18,7 @@ const initialState = {
   box: {},
   route: "signin",
   isSignedIn: false,
+  descriptions: [],
   user: {
     id: "",
     name: "",
@@ -71,6 +73,10 @@ class App extends Component {
   //function to detect image after button pressed
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
+
+    //general-image-recognition
+
+    //calling the backend to call the clarifai API to detect
     fetch("https://stark-everglades-20344.herokuapp.com/imageurl", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -117,6 +123,7 @@ class App extends Component {
 
   render() {
     const { box, route, isSignedIn, imageUrl } = this.state;
+    const descriptions = this.state.descriptions;
     return (
       <div className="App">
         <ParticlesBg type="cobweb" bg={true} />
@@ -136,6 +143,7 @@ class App extends Component {
               onButtonSubmit={this.onButtonSubmit}
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
+            <CardList descriptions={descriptions} />
           </div>
         ) : route === "signin" ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
