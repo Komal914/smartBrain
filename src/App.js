@@ -73,6 +73,20 @@ class App extends Component {
   //function to detect image after button pressed
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
+
+    fetch("https://stark-everglades-20344.herokuapp.com/imageurl2", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: this.state.input,
+      }),
+    }).then((response) => {
+      console.log("NEW CLARIFAI TING: ");
+      console.log(response);
+      response.json();
+    });
+
+    //calling the backend to call the clarifai API to detect face
     fetch("https://stark-everglades-20344.herokuapp.com/imageurl", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -90,8 +104,11 @@ class App extends Component {
               id: this.state.user.id,
             }),
           })
-            .then((response) => response.json())
+            .then((response) => {
+              response.json();
+            })
             .then((count) => {
+              //updating entry number for user
               //we cannot simply set state for entries because it will change the whole user object
               this.setState(Object.assign(this.state.user, { entries: count }));
             })
