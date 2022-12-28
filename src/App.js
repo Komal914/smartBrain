@@ -74,19 +74,9 @@ class App extends Component {
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
 
-    fetch("https://stark-everglades-20344.herokuapp.com/imageurl2", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        input: this.state.input,
-      }),
-    }).then((response) => {
-      console.log("NEW CLARIFAI TING: ");
-      console.log(response);
-      response.json();
-    });
+    //general-image-recognition
 
-    //calling the backend to call the clarifai API to detect face
+    //calling the backend to call the clarifai API to detect
     fetch("https://stark-everglades-20344.herokuapp.com/imageurl", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -104,11 +94,8 @@ class App extends Component {
               id: this.state.user.id,
             }),
           })
-            .then((response) => {
-              response.json();
-            })
+            .then((response) => response.json())
             .then((count) => {
-              //updating entry number for user
               //we cannot simply set state for entries because it will change the whole user object
               this.setState(Object.assign(this.state.user, { entries: count }));
             })
@@ -136,7 +123,7 @@ class App extends Component {
 
   render() {
     const { box, route, isSignedIn, imageUrl } = this.state;
-    const filteredRobots = this.state.descriptions;
+    const descriptions = this.state.descriptions;
     return (
       <div className="App">
         <ParticlesBg type="cobweb" bg={true} />
@@ -156,7 +143,7 @@ class App extends Component {
               onButtonSubmit={this.onButtonSubmit}
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
-            <CardList descriptions={filteredRobots} />
+            <CardList descriptions={descriptions} />
           </div>
         ) : route === "signin" ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
