@@ -70,12 +70,46 @@ class App extends Component {
     this.setState({ input: event.target.value });
   };
 
+  onGeneralModel = () => {
+    this.setState({ imageUrl: this.state.input });
+    //calling the backend to call the clarifai API to detect
+    fetch("https://stark-everglades-20344.herokuapp.com/imageDescribe", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: this.state.input,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ descriptions: data });
+        console.log("RESPONSE:", data);
+        if (data) {
+          fetch("https://stark-everglades-20344.herokuapp.com/image", {
+            method: "put",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: this.state.user.id,
+            }),
+          })
+            .then((response) => response.json())
+            .then((count) => {
+              //we cannot simply set state for entries because it will change the whole user object
+              this.setState(Object.assign(this.state.user, { entries: count }));
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+        if (!data) {
+          throw new Error("No response found!");
+        }
+      });
+  };
+
   //function to detect image after button pressed
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-
-    //general-image-recognition
-
     //calling the backend to call the clarifai API to detect
     fetch("https://stark-everglades-20344.herokuapp.com/imageurl", {
       method: "post",
@@ -141,9 +175,9 @@ class App extends Component {
             <ImageLinkForm
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
+              onGeneralModel={this.onGeneralModel}
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
-            <CardList descriptions={descriptions} />
           </div>
         ) : route === "signin" ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
