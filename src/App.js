@@ -82,8 +82,8 @@ class App extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ descriptions: data });
-        console.log("RESPONSE:", data);
+        this.setState({ descriptions: data.outputs[0].data.concepts });
+        console.log("RESPONSE:", data.outputs[0].data.concepts);
         if (data) {
           fetch("https://stark-everglades-20344.herokuapp.com/image", {
             method: "put",
@@ -105,6 +105,8 @@ class App extends Component {
           throw new Error("No response found!");
         }
       });
+
+    console.log("STATE DESC", this.state.descriptions);
   };
 
   //function to detect image after button pressed
@@ -178,6 +180,7 @@ class App extends Component {
               onGeneralModel={this.onGeneralModel}
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
+            <CardList descriptions={this.state.descriptions}></CardList>
           </div>
         ) : route === "signin" ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
