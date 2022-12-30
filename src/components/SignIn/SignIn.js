@@ -34,7 +34,6 @@ class SignIn extends React.Component {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
         }
-
       })
       .catch((error) => {
         console.error("ERRRRORRRRRRRRRRRRRR ", error);
@@ -50,7 +49,7 @@ class SignIn extends React.Component {
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Sign In</legend>
               <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="email-address">
+                <label className="db fw6 lh-copy f6 " htmlFor="email-address">
                   Email
                 </label>
                 <input
@@ -66,7 +65,7 @@ class SignIn extends React.Component {
                   Password
                 </label>
                 <input
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 "
                   type="password"
                   name="password"
                   id="password"
@@ -77,7 +76,7 @@ class SignIn extends React.Component {
             <div className="">
               <input
                 onClick={this.onSubmitSignIn}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib hover-light-green"
                 type="submit"
                 value="Sign in"
               />
@@ -85,7 +84,7 @@ class SignIn extends React.Component {
             <div className="lh-copy mt3">
               <p
                 onClick={() => onRouteChange("register")}
-                className="f6 link dim black db pointer"
+                className="f6 link dim black db pointer hover-light-green"
               >
                 Register
               </p>
