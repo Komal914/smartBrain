@@ -1,12 +1,14 @@
 # Smart Brain 
-Sign up and try out Clarifai's face detection model! [Link to site](https://komal914.github.io/smartBrain/)
+This application allows the user to experiment with artificial intelligence to detect faces and describe concepts in images.  [Check it out!](https://komal914.github.io/smartBrain/)
+
+This project has a custom backend server hosted on heroku with an added postgres database. This repository serves as the frontend portion for the application, in order to run the backend checkout [the backend repository !](https://github.com/Komal914/smart-brain-API)
 
 <img width="975" alt="Screenshot 2022-12-29 at 9 17 45 PM" src="https://user-images.githubusercontent.com/44416323/210027914-d7934829-819c-4b24-ac5e-ee43c454f324.png">
 
 
-## How to Run:
+## Check out the project!
 
-### clone the project:
+### Start by cloning the repo:
 ```
 git clone https://github.com/Komal914/smartBrain.git
 ```
