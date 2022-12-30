@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/smartBrain/static/css/main.c83788d9.chunk.css",
-    "main.js": "/smartBrain/static/js/main.4df4d9a0.chunk.js",
-    "main.js.map": "/smartBrain/static/js/main.4df4d9a0.chunk.js.map",
-    "runtime-main.js": "/smartBrain/static/js/runtime-main.861b946a.js",
-    "runtime-main.js.map": "/smartBrain/static/js/runtime-main.861b946a.js.map",
+    "main.css": "/smartBrain/static/css/main.b47678ab.chunk.css",
+    "main.js": "/smartBrain/static/js/main.c9023a56.chunk.js",
+    "main.js.map": "/smartBrain/static/js/main.c9023a56.chunk.js.map",
+    "runtime-main.js": "/smartBrain/static/js/runtime-main.1e4f98a1.js",
+    "runtime-main.js.map": "/smartBrain/static/js/runtime-main.1e4f98a1.js.map",
     "static/css/2.75261d94.chunk.css": "/smartBrain/static/css/2.75261d94.chunk.css",
-    "static/js/2.9452cdbb.chunk.js": "/smartBrain/static/js/2.9452cdbb.chunk.js",
-    "static/js/2.9452cdbb.chunk.js.map": "/smartBrain/static/js/2.9452cdbb.chunk.js.map",
-    "static/js/3.a6ea9c0a.chunk.js": "/smartBrain/static/js/3.a6ea9c0a.chunk.js",
-    "static/js/3.a6ea9c0a.chunk.js.map": "/smartBrain/static/js/3.a6ea9c0a.chunk.js.map",
+    "static/js/2.0ca93eb0.chunk.js": "/smartBrain/static/js/2.0ca93eb0.chunk.js",
+    "static/js/2.0ca93eb0.chunk.js.map": "/smartBrain/static/js/2.0ca93eb0.chunk.js.map",
+    "static/js/3.ad968e88.chunk.js": "/smartBrain/static/js/3.ad968e88.chunk.js",
+    "static/js/3.ad968e88.chunk.js.map": "/smartBrain/static/js/3.ad968e88.chunk.js.map",
     "index.html": "/smartBrain/index.html",
     "static/css/2.75261d94.chunk.css.map": "/smartBrain/static/css/2.75261d94.chunk.css.map",
-    "static/css/main.c83788d9.chunk.css.map": "/smartBrain/static/css/main.c83788d9.chunk.css.map",
-    "static/js/2.9452cdbb.chunk.js.LICENSE.txt": "/smartBrain/static/js/2.9452cdbb.chunk.js.LICENSE.txt"
+    "static/css/main.b47678ab.chunk.css.map": "/smartBrain/static/css/main.b47678ab.chunk.css.map",
+    "static/js/2.0ca93eb0.chunk.js.LICENSE.txt": "/smartBrain/static/js/2.0ca93eb0.chunk.js.LICENSE.txt",
+    "static/media/brain.40ac6cfc.png": "/smartBrain/static/media/brain.40ac6cfc.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.861b946a.js",
+    "static/js/runtime-main.1e4f98a1.js",
     "static/css/2.75261d94.chunk.css",
-    "static/js/2.9452cdbb.chunk.js",
-    "static/css/main.c83788d9.chunk.css",
-    "static/js/main.4df4d9a0.chunk.js"
+    "static/js/2.0ca93eb0.chunk.js",
+    "static/css/main.b47678ab.chunk.css",
+    "static/js/main.c9023a56.chunk.js"
   ]
 }
