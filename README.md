@@ -1,7 +1,8 @@
 # Smart Brain 
 Sign up and try out Clarifai's face detection model! [Link to site](https://komal914.github.io/smartBrain/)
 
-<img width="694" alt="Screenshot 2022-12-25 at 5 53 27 PM" src="https://user-images.githubusercontent.com/44416323/209483859-a34857bf-81db-400d-b4bf-e251831f1c0c.png">
+<img width="975" alt="Screenshot 2022-12-29 at 9 17 45 PM" src="https://user-images.githubusercontent.com/44416323/210027914-d7934829-819c-4b24-ac5e-ee43c454f324.png">
+
 
 ## How to Run:
 
