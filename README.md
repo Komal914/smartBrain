@@ -9,7 +9,7 @@ This project has a custom backend server hosted on heroku with an added postgres
 
 
 
-## Check out the project!
+## Check out the project:
 
 ### Start by cloning the repo:
 ```
